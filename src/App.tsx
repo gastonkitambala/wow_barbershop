@@ -68,7 +68,7 @@ const Hero = () => {
         >
           <div className="flex items-center gap-4 mb-6">
             <div className="h-[1px] w-12 bg-gold"></div>
-            <span className="text-gold text-xs font-bold uppercase tracking-[0.3em]">Est. 2018 — Premium Grooming</span>
+            <span className="text-gold text-xs font-bold uppercase tracking-[0.3em]">Est. 2016 — Premium Grooming</span>
           </div>
           
           <h1 className="font-display text-7xl md:text-9xl font-bold leading-[0.85] uppercase mb-8">
@@ -160,15 +160,15 @@ const About = () => {
             <span className="italic font-serif normal-case text-gold">A Legacy.</span>
           </h2>
           <p className="text-white/60 text-lg mb-8 leading-relaxed">
-            Founded in the heart of Ottawa, Wow Barbershop was born from a passion for authentic craftsmanship and the belief that every person deserves a grooming experience that goes beyond the ordinary. Our shop is a sanctuary — a place where tradition is honored, conversation flows freely, and every detail matters.
+            Since 2016, Wow Barbershop has been Ottawa's go-to spot for fantastic haircuts. Born from a passion for authentic craftsmanship in the heart of Vanier, our shop is a sanctuary — a place where quality and community come first, conversation flows freely, and every detail matters.
           </p>
           <p className="text-white/60 text-lg mb-12 leading-relaxed">
-            From the warm towels to the final brush of talc, every visit is choreographed to perfection. We don't just cut hair; we build confidence, one client at a time.
+            From the hot towel shave to the final brush of talc, every visit is crafted to perfection. We don't just cut hair; we build confidence, one client at a time.
           </p>
 
           <div className="grid grid-cols-3 gap-8 border-t border-white/10 pt-12">
             <div>
-              <div className="text-4xl font-display font-bold text-gold mb-2">7+</div>
+              <div className="text-4xl font-display font-bold text-gold mb-2">9+</div>
               <div className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Years of Excellence</div>
             </div>
             <div>
@@ -358,40 +358,86 @@ const InstagramFeed = () => {
 };
 
 const Testimonials = () => {
+  const reviews = [
+    {
+      text: "The atmosphere is cheerful and they are very welcoming. Great energy from the moment you walk in.",
+      name: "Jose A.",
+      source: "Booksy",
+      rating: 5,
+    },
+    {
+      text: "Amazing person and great work. Walked out looking fresh — exactly what I asked for.",
+      name: "M. Tremblay",
+      source: "Booksy",
+      rating: 5,
+    },
+    {
+      text: "Augusto never disappoints. Top quality service every single visit. Best barber in Vanier.",
+      name: "Client Review",
+      source: "Booksy",
+      rating: 5,
+    },
+    {
+      text: "Super clean shop, professional barbers, and they really take the time to understand what you want. Highly recommend.",
+      name: "D. Larocque",
+      source: "Google",
+      rating: 5,
+    },
+    {
+      text: "Been coming here since they opened. Consistent quality, great vibe, and fair prices. This is Ottawa's go-to barbershop.",
+      name: "Patrick O.",
+      source: "Google",
+      rating: 5,
+    },
+  ];
+
   return (
     <section id="reviews" className="py-32 bg-dark-lighter relative overflow-hidden">
       <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.03]">
         <div className="text-[30vw] font-display font-bold uppercase select-none">REVIEWS</div>
       </div>
-      
-      <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-        <div className="flex items-center justify-center gap-4 mb-10">
-          <div className="h-[1px] w-8 bg-gold"></div>
-          <span className="text-gold text-xs font-bold uppercase tracking-[0.3em]">Testimonials</span>
-          <div className="h-[1px] w-8 bg-gold"></div>
-        </div>
-        
-        <h2 className="font-display text-5xl md:text-7xl font-bold uppercase mb-16 leading-tight">
-          What Our <span className="italic font-serif normal-case text-gold">Clients</span> Say
-        </h2>
 
-        <div className="flex justify-center gap-1 mb-10">
-          {[...Array(5)].map((_, i) => <Star key={i} size={20} className="fill-gold text-gold" />)}
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="text-center mb-20">
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="h-[1px] w-8 bg-gold"></div>
+            <span className="text-gold text-xs font-bold uppercase tracking-[0.3em]">Testimonials</span>
+            <div className="h-[1px] w-8 bg-gold"></div>
+          </div>
+          <h2 className="font-display text-5xl md:text-7xl font-bold uppercase leading-tight">
+            What Our <span className="italic font-serif normal-case text-gold">Clients</span> Say
+          </h2>
         </div>
 
-        <p className="font-serif italic text-2xl md:text-4xl leading-relaxed text-white/90 mb-12">
-          "I've been to barbershops all over the world, and Wow Barbershop ranks among the very best. The atmosphere, the skill, the conversation — everything comes together perfectly. Marcus shaped my beard into a work of art."
-        </p>
-
-        <div>
-          <div className="text-lg font-display font-bold uppercase tracking-widest mb-1">Alexander Hunt</div>
-          <div className="text-gold text-[10px] font-bold uppercase tracking-[0.2em]">Client Since 2021</div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {reviews.map((r, i) => (
+            <div key={i} className={`border border-white/10 p-8 flex flex-col gap-6 hover:border-gold/30 transition-colors ${i === 0 ? "lg:col-span-1" : ""}`}>
+              <div className="flex gap-1">
+                {[...Array(r.rating)].map((_, j) => (
+                  <Star key={j} size={14} className="fill-gold text-gold" />
+                ))}
+              </div>
+              <p className="font-serif italic text-white/80 leading-relaxed flex-1">"{r.text}"</p>
+              <div className="flex items-center justify-between border-t border-white/10 pt-6">
+                <div>
+                  <div className="font-display font-bold uppercase tracking-widest text-sm">{r.name}</div>
+                  <div className="text-gold text-[10px] font-bold uppercase tracking-[0.2em] mt-1">{r.source}</div>
+                </div>
+                <div className="text-white/20 text-[10px] font-bold uppercase tracking-widest">Verified</div>
+              </div>
+            </div>
+          ))}
         </div>
 
-        <div className="flex justify-center gap-3 mt-16">
-          <div className="w-2 h-2 rounded-full bg-white/20"></div>
-          <div className="w-2 h-2 rounded-full bg-gold"></div>
-          <div className="w-2 h-2 rounded-full bg-white/20"></div>
+        <div className="text-center mt-12">
+          <a
+            href="https://booksy.com/en-ca/17273_wow-barbershop_barbershop_856322_vanier"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gold text-xs font-bold uppercase tracking-widest hover:text-white transition-colors"
+          >
+            See All Reviews on Booksy →
+          </a>
         </div>
       </div>
     </section>
@@ -519,11 +565,11 @@ const Footer = () => {
             <ul className="space-y-6 text-sm text-white/60">
               <li className="flex gap-4">
                 <MapPin size={18} className="text-gold shrink-0" />
-                <span>281 Montreal Rd, Vanier, <br /> Ottawa, ON K1L 6C4</span>
+                <span>75 Montréal Rd, Vanier, <br /> Ottawa, ON K1L 6E8</span>
               </li>
               <li className="flex gap-4">
                 <Phone size={18} className="text-gold shrink-0" />
-                <span>+1 (613) 744-1111</span>
+                <span>+1 (613) 854-4942</span>
               </li>
               <li className="flex gap-4">
                 <Clock size={18} className="text-gold shrink-0" />
